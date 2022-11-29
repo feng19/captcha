@@ -90,50 +90,10 @@ pub enum CreateOption {
 }
 
 #[rustler::nif]
-pub fn create(env: Env, options: Vec<CreateOption>) -> Option<(String, Binary)> {
+fn create(env: Env, options: Vec<CreateOption>) -> Option<(String, Binary)> {
     let mut c = Captcha::new();
     apply_options(&mut c, &options);
     as_tuple(env, c)
-}
-
-fn apply_options(c: &mut Captcha, options: &Vec<CreateOption>) {
-    for option in options.iter() {
-        match option {
-            CreateOption::AddChars(n) => { c.add_chars(*n); }
-            CreateOption::SetChars(string) => { c.set_chars(&*string.chars().collect::<Vec<char>>()); }
-            CreateOption::View { w, h } => { c.view(*w, *h); }
-            CreateOption::SetColor { r, g, b } => { c.set_color([*r, *g, *b]); }
-            CreateOption::Filters(filters) => { for f in filters.iter() { apply_filter(c, &*f) }; }
-        };
-    };
-}
-
-fn apply_filter(c: &mut Captcha, f: &FilterOption) {
-    match f {
-        FilterOption::Cow(fc) => {
-            let cow = match &fc.geometry {
-                Some(g) => { Cow::new().area(Geometry::new(g.left, g.right, g.top, g.bottom)) }
-                _none => { Cow::new() }
-            };
-            c.apply_filter(cow.circles(fc.n).min_radius(fc.min_radius).max_radius(fc.max_radius));
-        }
-        FilterOption::Noise(noise) => {
-            c.apply_filter(Noise::new(noise.prob));
-        }
-        FilterOption::Dots(dots) => {
-            c.apply_filter(Dots::new(dots.n).min_radius(dots.min_radius).max_radius(dots.max_radius));
-        }
-        FilterOption::Grid(grid) => {
-            c.apply_filter(Grid::new(grid.x_gap, grid.y_gap));
-        }
-        FilterOption::Wave(wave) => {
-            let w = Wave::new(wave.f, wave.amp);
-            match wave.direction {
-                DirectionEnum::Horizontal => { c.apply_filter(w.horizontal()); }
-                DirectionEnum::Vertical => { c.apply_filter(w.vertical()); }
-            };
-        }
-    };
 }
 
 #[rustler::nif]
@@ -191,6 +151,46 @@ fn create_by_name(env: Env, t: CaptchaNameEnum, d: DifficultyEnum, options: Opti
 #[rustler::nif]
 fn supported_chars() -> String {
     Captcha::new().supported_chars().iter().collect()
+}
+
+fn apply_options(c: &mut Captcha, options: &Vec<CreateOption>) {
+    for option in options.iter() {
+        match option {
+            CreateOption::AddChars(n) => { c.add_chars(*n); }
+            CreateOption::SetChars(string) => { c.set_chars(&*string.chars().collect::<Vec<char>>()); }
+            CreateOption::View { w, h } => { c.view(*w, *h); }
+            CreateOption::SetColor { r, g, b } => { c.set_color([*r, *g, *b]); }
+            CreateOption::Filters(filters) => { for f in filters.iter() { apply_filter(c, &*f) }; }
+        };
+    };
+}
+
+fn apply_filter(c: &mut Captcha, f: &FilterOption) {
+    match f {
+        FilterOption::Cow(fc) => {
+            let cow = match &fc.geometry {
+                Some(g) => { Cow::new().area(Geometry::new(g.left, g.right, g.top, g.bottom)) }
+                _none => { Cow::new() }
+            };
+            c.apply_filter(cow.circles(fc.n).min_radius(fc.min_radius).max_radius(fc.max_radius));
+        }
+        FilterOption::Noise(noise) => {
+            c.apply_filter(Noise::new(noise.prob));
+        }
+        FilterOption::Dots(dots) => {
+            c.apply_filter(Dots::new(dots.n).min_radius(dots.min_radius).max_radius(dots.max_radius));
+        }
+        FilterOption::Grid(grid) => {
+            c.apply_filter(Grid::new(grid.x_gap, grid.y_gap));
+        }
+        FilterOption::Wave(wave) => {
+            let w = Wave::new(wave.f, wave.amp);
+            match wave.direction {
+                DirectionEnum::Horizontal => { c.apply_filter(w.horizontal()); }
+                DirectionEnum::Vertical => { c.apply_filter(w.vertical()); }
+            };
+        }
+    };
 }
 
 fn as_tuple(env: Env, captcha: Captcha) -> Option<(String, Binary)> {
