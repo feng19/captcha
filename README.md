@@ -26,16 +26,31 @@ Documentation can be found at <https://hexdocs.pm/captcha_nif>.
 
 Crate to generate CAPTCHAs.
 
-example:
+Easy example:
 
 ```elixir
-{chars, png} = Captcha.easy()
-File.write!("captcha.png", png)
-chars
+iex> {chars, png} = Captcha.easy()
+{"SnZw8", <<...>>}
+iex> File.write!("captcha.png", png)
+:ok
 ```
 
-or create by options:
+Or create by custom chars:
 
 ```elixir
-{chars, png} = Captcha.easy(set_chars: "1234567890")
+iex> Captcha.easy(set_chars: "1234567890")
+{"SnZw8", <<...>>}
+```
+
+Create by options:
+
+```elixir
+iex> Captcha.create(
+...>   set_chars: "1234567890abcdefgABCDEFG",
+...>   add_chars: 6,
+...>   set_color: %{r: 0, g: 116, b: 204},
+...>   view: %{w: 220, h: 120},
+...>   filters: [filter, ...]
+...> )
+{"SnZw8", <<...>>}
 ```
