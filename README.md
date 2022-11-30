@@ -15,12 +15,14 @@ The package can be installed by adding `captcha` to your list of dependencies in
 ```elixir
 def deps do
   [
-    {:captcha, "~> 0.1.0", hex: :captcha_nif}
+    {:captcha, "~> 0.1", hex: :captcha_nif}
   ]
 end
 ```
 
 Documentation can be found at <https://hexdocs.pm/captcha_nif>.
+
+Rust Documentation can be found at <https://docs.rs/captcha/latest/captcha>.
 
 ## Usage
 
@@ -38,7 +40,7 @@ iex> File.write!("captcha.png", png)
 Or create by custom chars:
 
 ```elixir
-iex> Captcha.easy(set_chars: "1234567890")
+iex> Captcha.easy(set_color: %{r: 0, g: 116, b: 204})
 {"SnZw8", <<...>>}
 ```
 
@@ -54,3 +56,5 @@ iex> Captcha.create(
 ...> )
 {"SnZw8", <<...>>}
 ```
+
+More use case can see: [test/captcha_test.exs](test/captcha_test.exs) or [rust docs](https://docs.rs/captcha/latest/captcha/). 

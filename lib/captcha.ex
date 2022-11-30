@@ -11,7 +11,7 @@ defmodule Captcha do
 
   Or create by custom chars:
 
-      iex> Captcha.easy(set_chars: "1234567890")
+      iex> Captcha.easy(set_color: %{r: 0, g: 116, b: 204})
       {"SnZw8", <<...>>}
 
   Create by options:
