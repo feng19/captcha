@@ -23,7 +23,7 @@ defmodule Captcha do
       ...>   view: %{w: 220, h: 120},
       ...>   filters: [filter, ...]
       ...> )
-      {"SnZw8", <<...>>}
+      {"78a23G", <<...>>}
   """
   alias Captcha.Native
   alias Captcha.Native.Filter.{Cow, Dots, Grid, Noise, Wave}

@@ -54,7 +54,7 @@ iex> Captcha.create(
 ...>   view: %{w: 220, h: 120},
 ...>   filters: [filter, ...]
 ...> )
-{"SnZw8", <<...>>}
+{"78a23G", <<...>>}
 ```
 
 More use case can see: [test/captcha_test.exs](test/captcha_test.exs) or [rust docs](https://docs.rs/captcha/latest/captcha/). 
