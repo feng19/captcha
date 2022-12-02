@@ -4,7 +4,7 @@ defmodule CaptchaTest do
   alias Captcha.Native.Geometry
   alias Captcha.Native.Filter.{Cow, Dots, Grid, Noise, Wave}
 
-  @chars "1234567890abcdefgABCDEFG"
+  @chars "123456789abcdefgABCDEFG"
 
   test "gen funs" do
     assert {_chars, _png} = Native.easy()

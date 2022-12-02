@@ -17,7 +17,7 @@ defmodule Captcha do
   Create by options:
 
       iex> Captcha.create(
-      ...>   set_chars: "1234567890abcdefgABCDEFG",
+      ...>   set_chars: "123456789abcdefgABCDEFG",
       ...>   add_chars: 6,
       ...>   set_color: %{r: 0, g: 116, b: 204},
       ...>   view: %{w: 220, h: 120},
@@ -45,7 +45,7 @@ defmodule Captcha do
   example:
 
       iex> Captcha.create(
-      ...>   set_chars: "1234567890abcdefgABCDEFG",
+      ...>   set_chars: "123456789abcdefgABCDEFG",
       ...>   add_chars: 6,
       ...>   set_color: %{r: 0, g: 116, b: 204},
       ...>   view: %{w: 220, h: 120},
@@ -93,6 +93,10 @@ defmodule Captcha do
   defdelegate create_by_name(captcha_name, difficulty \\ :easy, options \\ nil), to: Native
 
   @doc """
+  Supported Chars
+
+  Not support chars: 0, O, o, L, i
+
   example:
 
       iex> Captcha.supported_chars()
