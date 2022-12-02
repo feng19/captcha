@@ -31,17 +31,28 @@ defmodule Captcha do
   @type name :: :amelia | :lucy | :mila
   @type difficulty :: :easy | :medium | :hard
   @type filter :: Cow.t() | Dots.t() | Grid.t() | Noise.t() | Wave.t()
+
+  @typedoc """
+  supported chars: "123456789ABCDEFGHJKMNPQRSTUVWXYZabcdefghijklmnpqrstuvwxyz"
+
+  exclude chars: 0, O, o, L, i
+  """
+  @type chars :: String.t()
+
   @type options :: [
-          set_chars: String.t(),
+          set_chars: chars,
           add_chars: non_neg_integer,
           set_color: %{r: non_neg_integer, g: non_neg_integer, b: non_neg_integer},
           view: %{w: non_neg_integer, h: non_neg_integer},
           filters: [filter]
         ]
 
-  @type return :: {String.t(), binary}
+  @type png :: binary
+  @type return :: {chars, png}
 
   @doc """
+  Create png image by options
+
   example:
 
       iex> Captcha.create(
@@ -57,6 +68,8 @@ defmodule Captcha do
   defdelegate create(options), to: Native
 
   @doc """
+  Create easy image
+
   example:
 
       iex> Captcha.easy()
@@ -66,6 +79,8 @@ defmodule Captcha do
   defdelegate easy(options \\ nil), to: Native
 
   @doc """
+  Create medium image
+
   example:
 
       iex> Captcha.medium()
@@ -75,6 +90,8 @@ defmodule Captcha do
   defdelegate medium(options \\ nil), to: Native
 
   @doc """
+  Create hard image
+
   example:
 
       iex> Captcha.hard()
@@ -84,6 +101,8 @@ defmodule Captcha do
   defdelegate hard(options \\ nil), to: Native
 
   @doc """
+  Create by name
+
   example:
 
       iex> Captcha.create_by_name(:lucy)
