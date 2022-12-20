@@ -48,7 +48,7 @@ Create by options:
 
 ```elixir
 iex> Captcha.create(
-...>   set_chars: "1234567890abcdefgABCDEFG",
+...>   set_chars: "123456789abcdefgABCDEFG",
 ...>   add_chars: 6,
 ...>   set_color: %{r: 0, g: 116, b: 204},
 ...>   view: %{w: 220, h: 120},
