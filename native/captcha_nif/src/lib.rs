@@ -89,14 +89,14 @@ pub enum CreateOption {
     Filters(Vec<FilterOption>),
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn create(env: Env, options: Vec<CreateOption>) -> Option<(String, Binary)> {
     let mut c = Captcha::new();
     apply_options(&mut c, &options);
     as_tuple(env, c)
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn easy(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)> {
     let mut c = gen(Difficulty::Easy);
     match options {
@@ -106,7 +106,7 @@ fn easy(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)
     as_tuple(env, c)
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn medium(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)> {
     let mut c = gen(Difficulty::Medium);
     match options {
@@ -116,7 +116,7 @@ fn medium(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binar
     as_tuple(env, c)
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn hard(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)> {
     let mut c = gen(Difficulty::Hard);
     match options {
@@ -126,7 +126,7 @@ fn hard(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)
     as_tuple(env, c)
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn create_by_name(env: Env, t: CaptchaNameEnum, d: DifficultyEnum, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)> {
     let difficulty = match d {
         DifficultyEnum::Easy => Difficulty::Easy,
@@ -148,7 +148,7 @@ fn create_by_name(env: Env, t: CaptchaNameEnum, d: DifficultyEnum, options: Opti
     as_tuple(env, c)
 }
 
-#[rustler::nif]
+#[rustler::nif(schedule = "DirtyCpu")]
 fn supported_chars() -> String {
     Captcha::new().supported_chars().iter().collect()
 }
