@@ -1,7 +1,7 @@
 defmodule Captcha.MixProject do
   use Mix.Project
 
-  @version "0.1.2"
+  @version "0.1.3"
   @source_url "https://github.com/feng19/captcha"
 
   def project do
@@ -24,7 +24,7 @@ defmodule Captcha.MixProject do
 
   defp deps do
     [
-      {:rustler, "~> 0.26"},
+      {:rustler, "~> 0.30"},
       {:ex_doc, ">= 0.0.0", only: [:docs, :dev], runtime: false}
     ]
   end
