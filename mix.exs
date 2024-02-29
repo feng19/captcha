@@ -1,7 +1,7 @@
 defmodule Captcha.MixProject do
   use Mix.Project
 
-  @version "0.1.3"
+  @version "0.1.4"
   @source_url "https://github.com/feng19/captcha"
 
   def project do
@@ -37,6 +37,7 @@ defmodule Captcha.MixProject do
       ],
       main: "readme",
       source_url: @source_url,
+      source_ref: "master",
       formatters: ["html"],
       formatter_opts: [gfm: true]
     ]
