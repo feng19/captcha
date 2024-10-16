@@ -1,7 +1,7 @@
 defmodule Captcha.MixProject do
   use Mix.Project
 
-  @version "0.1.4"
+  @version "0.2.0"
   @source_url "https://github.com/feng19/captcha"
 
   def project do
@@ -24,7 +24,8 @@ defmodule Captcha.MixProject do
 
   defp deps do
     [
-      {:rustler, "~> 0.30"},
+      {:rustler_precompiled, "~> 0.4"},
+      {:rustler, ">= 0.0.0", optional: true},
       {:ex_doc, ">= 0.0.0", only: [:docs, :dev], runtime: false}
     ]
   end
@@ -47,7 +48,7 @@ defmodule Captcha.MixProject do
     [
       name: "captcha_nif",
       description: "NIF bindings for the captcha Rust implementation",
-      files: ["lib", "native", "mix.exs", "README.md", "LICENSE.md"],
+      files: ["lib", "native", "checksum-*.exs", "mix.exs", "README.md", "LICENSE.md"],
       maintainers: ["feng19"],
       licenses: ["Apache-2.0"],
       links: %{"GitHub" => @source_url}
