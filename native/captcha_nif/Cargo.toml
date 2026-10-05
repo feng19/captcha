@@ -10,5 +10,5 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-rustler = "0.30.0"
-captcha = "0.0.9"
+rustler = "0.37"
+captcha = "1.0.0"

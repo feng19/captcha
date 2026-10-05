@@ -1,5 +1,5 @@
 use std::io::Write;
-use captcha::{gen, by_name, Captcha, CaptchaName, Difficulty, Geometry};
+use captcha::{generate, by_name, Captcha, CaptchaName, Difficulty, Geometry};
 use captcha::filters::{Cow, Dots, Grid, Noise, Wave};
 use rustler::{Binary, Env, NewBinary, NifTaggedEnum, NifUntaggedEnum, NifUnitEnum, NifStruct};
 
@@ -98,7 +98,7 @@ fn create(env: Env, options: Vec<CreateOption>) -> Option<(String, Binary)> {
 
 #[rustler::nif(schedule = "DirtyCpu")]
 fn easy(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)> {
-    let mut c = gen(Difficulty::Easy);
+    let mut c = generate(Difficulty::Easy);
     match options {
         Some(os) => { apply_options(&mut c, &os); }
         _ => ()
@@ -108,7 +108,7 @@ fn easy(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)
 
 #[rustler::nif(schedule = "DirtyCpu")]
 fn medium(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)> {
-    let mut c = gen(Difficulty::Medium);
+    let mut c = generate(Difficulty::Medium);
     match options {
         Some(os) => { apply_options(&mut c, &os); }
         _ => ()
@@ -118,7 +118,7 @@ fn medium(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binar
 
 #[rustler::nif(schedule = "DirtyCpu")]
 fn hard(env: Env, options: Option<Vec<CreateOption>>) -> Option<(String, Binary)> {
-    let mut c = gen(Difficulty::Hard);
+    let mut c = generate(Difficulty::Hard);
     match options {
         Some(os) => { apply_options(&mut c, &os); }
         _ => ()
@@ -206,4 +206,4 @@ fn to_binary(env: Env, v: Vec<u8>) -> Binary {
     binary.into()
 }
 
-rustler::init!("Elixir.Captcha.Native", [create, easy, medium, hard, create_by_name, supported_chars]);
+rustler::init!("Elixir.Captcha.Native");
