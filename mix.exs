@@ -48,7 +48,16 @@ defmodule Captcha.MixProject do
     [
       name: "captcha_nif",
       description: "NIF bindings for the captcha Rust implementation",
-      files: ["lib", "native", "checksum-*.exs", "mix.exs", "README.md", "LICENSE.md"],
+      files: [
+        "lib",
+        "native/captcha_nif/.cargo",
+        "native/captcha_nif/src",
+        "native/captcha_nif/Cargo*",
+        "checksum-*.exs",
+        "mix.exs",
+        "README.md",
+        "LICENSE.md"
+      ],
       maintainers: ["feng19"],
       licenses: ["Apache-2.0"],
       links: %{"GitHub" => @source_url}

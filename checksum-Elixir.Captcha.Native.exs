@@ -1,10 +1,10 @@
 %{
-  "captcha_nif-v0.3.0-nif-2.15-x86_64-pc-windows-gnu.dll.tar.gz" => "sha256:a2ee7aeb2e265235645137422c2f8d03b4a55be7d523ba51763117f2df1b1691",
-  "captcha_nif-v0.3.0-nif-2.15-x86_64-pc-windows-msvc.dll.tar.gz" => "sha256:f54f58062a3fe2c3262707c88fdb8c037ce9592a3758a1889344937c4ffff6d0",
-  "libcaptcha_nif-v0.3.0-nif-2.15-aarch64-apple-darwin.so.tar.gz" => "sha256:b8dde16ecb949cbc542a29bc8c76a4db00f0e94e8ebec07c9fa3fbde5720e2f7",
-  "libcaptcha_nif-v0.3.0-nif-2.15-aarch64-unknown-linux-gnu.so.tar.gz" => "sha256:a335302532309a9a277ceece5f216c85093d5deedc7c7959d11f6970878d11eb",
-  "libcaptcha_nif-v0.3.0-nif-2.15-aarch64-unknown-linux-musl.so.tar.gz" => "sha256:1d352fc3dea2c4ac62e237f054d44489b48cdfaf5830229323817259a14bd113",
-  "libcaptcha_nif-v0.3.0-nif-2.15-x86_64-apple-darwin.so.tar.gz" => "sha256:957c82bf933e8f81be7bbaab13245e80ec899fc84cc50f7a899e2662d504548b",
-  "libcaptcha_nif-v0.3.0-nif-2.15-x86_64-unknown-linux-gnu.so.tar.gz" => "sha256:54dd3ff9275515eb70883d4901ec74769d20e97137b9d48c85af4d5d2b616bda",
-  "libcaptcha_nif-v0.3.0-nif-2.15-x86_64-unknown-linux-musl.so.tar.gz" => "sha256:225d96166eb63a6468e89ce67852398b1778bae9308562d5325554f75c65f7f8",
+  "captcha_nif-v0.3.0-nif-2.15-x86_64-pc-windows-gnu.dll.tar.gz" => "sha256:8892e4494afcbc87a9d82944546ec62ac3ac988538c3f63132bb16cd4f09a384",
+  "captcha_nif-v0.3.0-nif-2.15-x86_64-pc-windows-msvc.dll.tar.gz" => "sha256:2b018203b39356a14d345fcaaba3a7a503abee10bbdc8209817f6944bb623a87",
+  "libcaptcha_nif-v0.3.0-nif-2.15-aarch64-apple-darwin.so.tar.gz" => "sha256:79a68922981baacbc54a7529fd4379fa2d1f2842b7f34a7713590ac7129ead9c",
+  "libcaptcha_nif-v0.3.0-nif-2.15-aarch64-unknown-linux-gnu.so.tar.gz" => "sha256:7ab02f88b2dab1c154ac75d3c6831204322e7fd46fd9511084daa5c9f3c3b90f",
+  "libcaptcha_nif-v0.3.0-nif-2.15-aarch64-unknown-linux-musl.so.tar.gz" => "sha256:92c0b8b3dcbc8ab369ef01d77ae7af81c0c8341ce706df78e447d87da8510ff2",
+  "libcaptcha_nif-v0.3.0-nif-2.15-x86_64-apple-darwin.so.tar.gz" => "sha256:733c678f8538532871b11c36ecc29ae0580491f7768041da8ae131db617c1063",
+  "libcaptcha_nif-v0.3.0-nif-2.15-x86_64-unknown-linux-gnu.so.tar.gz" => "sha256:665c35e1b6957f713d634c21d856c1c1a0269f67d5f4de02fd89b1c5ed249c6b",
+  "libcaptcha_nif-v0.3.0-nif-2.15-x86_64-unknown-linux-musl.so.tar.gz" => "sha256:542694697837277cd62e9ca54e5e8e888e18731486b6d285734e9dd504ca81e1",
 }
